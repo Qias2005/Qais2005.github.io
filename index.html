@@ -32,44 +32,40 @@
       position: fixed;
       top: 0;
       width: 100%;
-      max-height: 80px;
+      z-index: 1000;
       display: flex;
       align-items: center;
-      gap: 15px;
-      z-index: 1000;
+      gap: 20px;
       transition: top 0.3s ease-in-out;
+      height: 70px;
     }
     header img {
-      width: 110px;
+      width: 50px;
       height: auto;
       display: block;
-      flex-shrink: 0;
     }
     header .header-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      white-space: nowrap;
     }
     header h1 {
       margin: 0;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      line-height: 1.1;
     }
     header p {
-      margin: 2px 0 0;
+      margin: 2px 0 0 0;
       font-size: 1rem;
       font-weight: 300;
       letter-spacing: 0.05em;
-      line-height: 1.1;
     }
 
     main {
       max-width: 900px;
-      margin: 40px auto 60px;
-      padding-top: 100px; /* enough for fixed header */
+      margin: 0 auto 60px;
+      padding-top: 90px; /* enough to clear header height */
       padding-left: 40px;
       padding-right: 40px;
       background: white;
@@ -253,14 +249,11 @@
     /* Responsive */
     @media (max-width: 650px) {
       main {
-        margin: 20px 15px 40px;
+        margin: 0 15px 40px;
         padding: 20px;
       }
       header h1 {
-        font-size: 1.4rem;
-      }
-      header p {
-        font-size: 0.9rem;
+        font-size: 1.6rem;
       }
       section h2 {
         font-size: 1.6rem;
@@ -290,7 +283,7 @@
   <main>
     <section data-aos="fade-up" id="about">
       <h2>About Keeta Jordan</h2>
-      <p><strong>Keeta Jordan (K.E.E.T.A: Kinetic, Efficient, Express Transport Assistant)</strong> is the leading drone delivery service based in Amman, Jordan, specializing in fast, safe, and eco-friendly drone deliveries. Whether it’s your favorite food, coffee, or essential items, our innovative technology ensures quick and reliable shipping across the city.</p>
+      <p><strong>KEETA</strong> (Kinetic, Efficient, Express Transport Assistant) Jordan is the leading drone delivery service based in Amman, Jordan, specializing in fast, safe, and eco-friendly drone deliveries. Whether it’s your favorite food, coffee, or essential items, our innovative technology ensures quick and reliable shipping across the city.</p>
     </section>
 
     <section data-aos="zoom-in" id="mission">
@@ -317,10 +310,11 @@
       </ul>
     </section>
 
-    <!-- Live Drone Tracker Demo -->
+    <!-- New Section: Live Drone Tracker Demo -->
     <section data-aos="fade-up" id="tracker">
       <h2>Live Drone Tracker Demo</h2>
       <p>Experience how our drones fly across Amman delivering your orders in real-time.</p>
+      <!-- Using OpenStreetMap iframe as a placeholder demo -->
       <iframe 
         src="https://www.openstreetmap.org/export/embed.html?bbox=35.765%2C31.957%2C35.923%2C32.031&layer=mapnik" 
         style="border:1px solid #007acc; border-radius:12px; width:100%; height:350px;" 
@@ -330,7 +324,7 @@
       <p style="font-size: 0.9rem; color: #555; margin-top: 8px;">* This is a demo map to showcase tracking concept.</p>
     </section>
 
-    <!-- Signup / Waitlist Form -->
+    <!-- New Section: Signup / Waitlist Form -->
     <section data-aos="fade-left" id="signup">
       <h2>Join Our Waitlist</h2>
       <p>Sign up now to get notified when our app launches and be the first to experience fast drone delivery in Jordan.</p>
@@ -341,7 +335,7 @@
       <p id="formMessage" style="margin-top: 10px; color: green; display: none;"></p>
     </section>
 
-    <!-- Blog / News -->
+    <!-- New Section: Blog / News -->
     <section data-aos="fade-up" id="blog">
       <h2>Latest News</h2>
       <article style="margin-bottom: 20px;">
@@ -360,7 +354,7 @@
       </article>
     </section>
 
-    <!-- Environmental Impact -->
+    <!-- New Section: Environmental Impact Stats -->
     <section data-aos="fade-right" id="impact">
       <h2>Environmental Impact</h2>
       <ul style="list-style:none; padding-left:0;">
@@ -376,7 +370,7 @@
       </ul>
     </section>
 
-    <!-- FAQ -->
+    <!-- Expanded FAQ -->
     <section data-aos="fade-up" id="faq">
       <h2>Frequently Asked Questions</h2>
 
@@ -400,6 +394,7 @@
         <div class="faq-answer">We will notify you immediately and provide alternative options such as manual delivery or pickup points.</div>
       </div>
 
+      <!-- New FAQ items -->
       <div class="faq-item">
         <div class="faq-question">Are drones safe to use in urban areas?</div>
         <div class="faq-answer">Yes, our drones are equipped with advanced sensors and safety protocols to avoid obstacles and ensure safe flights.</div>
@@ -443,39 +438,44 @@
           ans.style.maxHeight = null;
         } else {
           ans.classList.add('open');
-          ans.style.maxHeight = ans.scrollHeight + "px";
+          ans.style.maxHeight = ans.scrollHeight + 'px';
         }
       });
     });
 
-    // Waitlist form submit simulation
+    // Signup form handler - for now just simulate success message
     function handleSubmit(event) {
       event.preventDefault();
-      const form = event.target;
-      const emailInput = form.email;
-      const messageP = document.getElementById('formMessage');
-      if (!emailInput.value) return false;
-      messageP.style.display = 'block';
-      messageP.style.color = 'green';
-      messageP.textContent = `Thank you, ${emailInput.value}, for joining our waitlist! We'll notify you soon.`;
-      emailInput.value = '';
+      const emailInput = document.getElementById('email');
+      const message = document.getElementById('formMessage');
+      if(emailInput.value){
+        message.textContent = `Thank you! We'll notify you at ${emailInput.value}`;
+        message.style.color = 'green';
+        message.style.display = 'block';
+        emailInput.value = '';
+      } else {
+        message.textContent = 'Please enter a valid email.';
+        message.style.color = 'red';
+        message.style.display = 'block';
+      }
       return false;
     }
 
     // Header hide on scroll down, show on scroll up
     let lastScrollTop = 0;
     const header = document.getElementById('main-header');
+
     window.addEventListener('scroll', () => {
-      let st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop && st > 80){
-        // Scroll down
-        header.style.top = "-90px";
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        // scrolling down - hide header
+        header.style.top = '-70px'; // hide above the top (adjust to header height)
       } else {
-        // Scroll up
-        header.style.top = "0";
+        // scrolling up - show header
+        header.style.top = '0';
       }
-      lastScrollTop = st <= 0 ? 0 : st; 
-    }, false);
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+    });
   </script>
 
 </body>
