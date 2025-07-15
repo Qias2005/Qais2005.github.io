@@ -77,6 +77,9 @@
     p {
       font-size: 1.1rem;
     }
+    ul {
+      padding-left: 20px;
+    }
 
     /* Button */
     .button {
@@ -130,11 +133,18 @@
       position: relative;
       padding-right: 20px;
       user-select: none;
+      background: #e7f0fa;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .faq-question:hover {
+      background: #d0e4fb;
     }
     .faq-question::after {
       content: '+';
       position: absolute;
-      right: 0;
+      right: 15px;
       font-size: 20px;
       transition: transform 0.3s ease;
     }
@@ -146,11 +156,16 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.4s ease;
-      padding-left: 12px;
+      padding-left: 15px;
       color: #444;
+      background: #f9fbfe;
+      border-left: 4px solid #007acc;
+      border-radius: 0 8px 8px 0;
+      margin-top: 6px;
     }
     .faq-answer.open {
-      padding-top: 8px;
+      padding-top: 12px;
+      padding-bottom: 12px;
       max-height: 500px;
     }
 
@@ -190,6 +205,38 @@
       text-align: right;
     }
 
+    /* Form */
+    form {
+      max-width: 480px;
+      margin-top: 20px;
+    }
+    input[type="email"] {
+      width: 70%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1.5px solid #007acc;
+      margin-right: 10px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    input[type="email"]:focus {
+      border-color: #005b99;
+    }
+    input[type="submit"] {
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background: #005b99;
+    }
+
     /* Responsive */
     @media (max-width: 650px) {
       main {
@@ -202,9 +249,14 @@
       section h2 {
         font-size: 1.6rem;
       }
-      .button {
+      .button, input[type="submit"], input[type="email"] {
         font-size: 16px;
         padding: 12px 24px;
+      }
+      input[type="email"] {
+        width: 100%;
+        margin-bottom: 12px;
+        margin-right: 0;
       }
     }
   </style>
@@ -247,57 +299,121 @@
       </ul>
     </section>
 
+    <!-- New Section: Live Drone Tracker Demo -->
+    <section data-aos="fade-up" id="tracker">
+      <h2>Live Drone Tracker Demo</h2>
+      <p>Experience how our drones fly across Amman delivering your orders in real-time.</p>
+      <!-- Using OpenStreetMap iframe as a placeholder demo -->
+      <iframe 
+        src="https://www.openstreetmap.org/export/embed.html?bbox=35.765%2C31.957%2C35.923%2C32.031&layer=mapnik" 
+        style="border:1px solid #007acc; border-radius:12px; width:100%; height:350px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p style="font-size: 0.9rem; color: #555; margin-top: 8px;">* This is a demo map to showcase tracking concept.</p>
+    </section>
+
+    <!-- New Section: Signup / Waitlist Form -->
+    <section data-aos="fade-left" id="signup">
+      <h2>Join Our Waitlist</h2>
+      <p>Sign up now to get notified when our app launches and be the first to experience fast drone delivery in Jordan.</p>
+      <form id="waitlistForm" onsubmit="return handleSubmit(event)">
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        <input type="submit" value="Notify Me" />
+      </form>
+      <p id="formMessage" style="margin-top: 10px; color: green; display: none;"></p>
+    </section>
+
+    <!-- New Section: Blog / News -->
+    <section data-aos="fade-up" id="blog">
+      <h2>Latest News</h2>
+      <article style="margin-bottom: 20px;">
+        <h3>Drone Food Delivery: The Future is Here</h3>
+        <p>Discover how drone technology is transforming food delivery services worldwide and here in Jordan.</p>
+        <a href="https://www.techradar.com/news/drones-are-the-future-of-food-delivery" target="_blank" rel="noopener" class="button">Read More</a>
+      </article>
+      <article style="margin-bottom: 20px;">
+        <h3>Reducing Carbon Footprint with Drones</h3>
+        <p>Learn how drone deliveries can significantly cut down emissions compared to traditional transport methods.</p>
+        <a href="https://www.ourcrowd.com/learn/drone-food-delivery" target="_blank" rel="noopener" class="button">Read More</a>
+      </article>
+      <article>
+        <h3>Keeta Jordan Launch Plans</h3>
+        <p>Stay tuned for updates on our upcoming app launch and exciting partnerships across Amman.</p>
+      </article>
+    </section>
+
+    <!-- New Section: Environmental Impact Stats -->
+    <section data-aos="fade-right" id="impact">
+      <h2>Environmental Impact</h2>
+      <ul style="list-style:none; padding-left:0;">
+        <li style="margin-bottom: 15px; font-size:1.2rem;">
+          🚀 <strong>50% reduction</strong> in delivery emissions compared to traditional vehicles.
+        </li>
+        <li style="margin-bottom: 15px; font-size:1.2rem;">
+          🌿 <strong>Zero fuel consumption</strong> with our electric-powered drones.
+        </li>
+        <li style="margin-bottom: 15px; font-size:1.2rem;">
+          🌍 <strong>Lower traffic congestion</strong> in busy Amman neighborhoods.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Expanded FAQ -->
     <section data-aos="fade-up" id="faq">
       <h2>Frequently Asked Questions</h2>
+
       <div class="faq-item">
         <div class="faq-question">How fast is the drone delivery service?</div>
         <div class="faq-answer">Our drones typically deliver within 15-30 minutes depending on your location in Amman.</div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question">Is the delivery contactless?</div>
         <div class="faq-answer">Yes, all deliveries are fully contactless for safety and convenience.</div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question">Can I track my order?</div>
         <div class="faq-answer">Absolutely! Our mobile app lets you track your delivery in real-time.</div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question">What if the drone can’t reach my address?</div>
         <div class="faq-answer">We will notify you immediately and provide alternative options such as manual delivery or pickup points.</div>
       </div>
-    </section>
 
-    <section data-aos="fade-left" id="testimonials">
-      <h2>What Our Customers Say</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>“Keeta Jordan’s drone delivery made my lunch so easy and fast. Love the convenience!”</p>
-          <div class="testimonial-author">- Sara M.</div>
-        </div>
-        <div class="testimonial">
-          <p>“Reliable, eco-friendly, and super quick. Highly recommend their service.”</p>
-          <div class="testimonial-author">- Omar A.</div>
-        </div>
-        <div class="testimonial">
-          <p>“The tracking feature is amazing — I always know exactly when my order arrives!”</p>
-          <div class="testimonial-author">- Lina T.</div>
-        </div>
+      <!-- New FAQ items -->
+      <div class="faq-item">
+        <div class="faq-question">Are drones safe to use in urban areas?</div>
+        <div class="faq-answer">Yes, our drones are equipped with advanced sensors and safety protocols to avoid obstacles and ensure safe flights.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What is the maximum weight a drone can carry?</div>
+        <div class="faq-answer">Currently, our drones can carry packages weighing up to 5 kilograms, suitable for most food and essential deliveries.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How do you handle bad weather?</div>
+        <div class="faq-answer">For safety, drone operations are paused during severe weather conditions. We notify customers promptly and reschedule deliveries if needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I schedule a delivery for a specific time?</div>
+        <div class="faq-answer">Yes, the app will allow you to select preferred delivery windows once launched.</div>
       </div>
     </section>
 
-    <section data-aos="fade-up" id="contact">
-      <h2>Get In Touch</h2>
-      <p>We’re currently building our app and expanding our service. For inquiries, partnerships, or feedback, reach out to us anytime!</p>
-      <a href="mailto:keeta.jordan.app@gmail.com" class="button">Contact Us</a>
-    </section>
   </main>
 
-  <footer data-aos="fade-up">
+  <footer data-aos="fade-up" style="text-align:center; padding: 20px; font-size: 0.9rem; color: #666;">
     &copy; 2025 Keeta Jordan. All rights reserved.
   </footer>
 
   <!-- AOS JS for scroll animations -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
   <script>
     AOS.init({ duration: 900, once: true });
 
@@ -315,6 +431,23 @@
         }
       });
     });
+
+    // Signup form handler - for now just simulate success message
+    function handleSubmit(event) {
+      event.preventDefault();
+      const emailInput = document.getElementById('email');
+      const message = document.getElementById('formMessage');
+      if(emailInput.value){
+        message.textContent = `Thank you! We'll notify you at ${emailInput.value}`;
+        message.style.color = 'green';
+        emailInput.value = '';
+      } else {
+        message.textContent = 'Please enter a valid email.';
+        message.style.color = 'red';
+      }
+      return false;
+    }
   </script>
+
 </body>
 </html>
