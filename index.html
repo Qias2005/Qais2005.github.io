@@ -27,13 +27,14 @@
     header {
       background: #007acc;
       color: white;
-      padding: 30px 20px;
+      padding: 15px 20px; /* reduced from 30px to 15px */
       text-align: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: fixed; /* fixed to top */
       top: 0;
       width: 100%;
       z-index: 1000;
+      transition: top 0.3s ease-in-out;
     }
     header img {
       width: 180px;
@@ -56,7 +57,7 @@
     main {
       max-width: 900px;
       margin: 40px auto 60px;
-      padding-top: 140px; /* space for fixed header */
+      padding-top: 110px; /* adjusted for smaller header height */
       padding-left: 40px;
       padding-right: 40px;
       background: white;
@@ -263,7 +264,7 @@
 </head>
 <body>
 
-  <header data-aos="fade-down">
+  <header data-aos="fade-down" id="main-header">
     <img src="keeta-logo.png" alt="Keeta Jordan Logo" />
     <h1>Keeta Jordan</h1>
     <p>Your Local Drone Delivery for Food, Coffee & Essentials</p>
@@ -440,14 +441,33 @@
       if(emailInput.value){
         message.textContent = `Thank you! We'll notify you at ${emailInput.value}`;
         message.style.color = 'green';
+        message.style.display = 'block';
         emailInput.value = '';
       } else {
         message.textContent = 'Please enter a valid email.';
         message.style.color = 'red';
+        message.style.display = 'block';
       }
       return false;
     }
+
+    // Header hide on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        // scrolling down - hide header
+        header.style.top = '-110px'; // hide above the top, adjust to header height (110px approx)
+      } else {
+        // scrolling up - show header
+        header.style.top = '0';
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+    });
   </script>
 
 </body>
 </html>
+
