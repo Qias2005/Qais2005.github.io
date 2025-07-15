@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +13,11 @@
   <meta name="robots" content="index, follow" />
   <meta name="google-site-verification" content="mLoSzfOM4oay3V_GR9yyDXEbys7bO3IXdT-c1RbNIxU" />
 
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- AOS CSS for scroll animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
+    /* Base & layout */
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,6 +44,7 @@
     header img {
       width: 50px;
       height: auto;
+      display: block;
     }
     header .header-text {
       display: flex;
@@ -62,18 +67,16 @@
     main {
       max-width: 900px;
       margin: 0 auto 60px;
-      padding-top: 90px;
+      padding-top: 90px; /* enough to clear header height */
       padding-left: 40px;
       padding-right: 40px;
       background: white;
       border-radius: 12px;
       box-shadow: 0 0 30px rgba(0,0,0,0.07);
     }
-
     section {
       margin-bottom: 60px;
     }
-
     section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
@@ -82,15 +85,14 @@
       padding-bottom: 6px;
       letter-spacing: 1px;
     }
-
     p {
       font-size: 1.1rem;
     }
-
     ul {
       padding-left: 20px;
     }
 
+    /* Button */
     .button {
       background: #007acc;
       color: white;
@@ -104,19 +106,20 @@
       margin-top: 12px;
       text-decoration: none;
     }
-
-    .button:hover {
+    .button:hover,
+    .button:focus {
       background: #005b99;
       box-shadow: 0 6px 18px rgba(0, 91, 153, 0.4);
       transform: scale(1.05);
+      outline: none;
     }
 
+    /* Gallery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-
     .gallery img {
       width: 100%;
       height: auto;
@@ -125,38 +128,41 @@
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-
     .gallery img:hover {
       transform: scale(1.07);
       box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     }
 
+    /* FAQ */
     .faq-item {
       margin-bottom: 18px;
     }
-
     .faq-question {
       font-weight: 600;
       cursor: pointer;
       color: #007acc;
+      position: relative;
+      padding-right: 20px;
+      user-select: none;
       background: #e7f0fa;
       padding: 12px 15px;
       border-radius: 8px;
       transition: background 0.3s ease;
-      position: relative;
     }
-
+    .faq-question:hover {
+      background: #d0e4fb;
+    }
     .faq-question::after {
       content: '+';
       position: absolute;
       right: 15px;
       font-size: 20px;
+      transition: transform 0.3s ease;
     }
-
     .faq-question.active::after {
       content: '-';
+      transform: rotate(180deg);
     }
-
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -168,18 +174,53 @@
       border-radius: 0 8px 8px 0;
       margin-top: 6px;
     }
-
     .faq-answer.open {
       padding-top: 12px;
       padding-bottom: 12px;
       max-height: 500px;
     }
 
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .testimonial {
+      background: #e6f0fb;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 4rem;
+      color: #007acc;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      opacity: 0.15;
+    }
+    .testimonial p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .testimonial-author {
+      margin-top: 14px;
+      font-weight: 700;
+      color: #005b99;
+      font-style: normal;
+      text-align: right;
+    }
+
+    /* Form */
     form {
       max-width: 480px;
       margin-top: 20px;
     }
-
     input[type="email"] {
       width: 70%;
       padding: 12px;
@@ -188,8 +229,11 @@
       border: 1.5px solid #007acc;
       margin-right: 10px;
       outline: none;
+      transition: border-color 0.3s ease;
     }
-
+    input[type="email"]:focus {
+      border-color: #005b99;
+    }
     input[type="submit"] {
       background: #007acc;
       color: white;
@@ -198,31 +242,28 @@
       font-size: 1rem;
       border-radius: 6px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
-
     input[type="submit"]:hover {
       background: #005b99;
     }
 
+    /* Responsive */
     @media (max-width: 650px) {
       main {
         margin: 0 15px 40px;
         padding: 20px;
       }
-
       header h1 {
         font-size: 1.6rem;
       }
-
       section h2 {
         font-size: 1.6rem;
       }
-
       .button, input[type="submit"], input[type="email"] {
         font-size: 16px;
         padding: 12px 24px;
       }
-
       input[type="email"] {
         width: 100%;
         margin-bottom: 12px;
@@ -231,8 +272,8 @@
     }
   </style>
 </head>
-
 <body>
+
   <header data-aos="fade-down" id="main-header">
     <img src="keeta-logo.png" alt="Keeta Jordan Logo" />
     <div class="header-text">
@@ -242,28 +283,26 @@
   </header>
 
   <main>
-    <section id="about" data-aos="fade-up">
+    <section data-aos="fade-up" id="about">
       <h2>About Keeta Jordan</h2>
-      <p><strong>KEETA</strong> (Kinetic, Efficient, Express Transport Assistant) Jordan is the leading drone delivery service based in Amman, Jordan, specializing in fast, safe, and eco-friendly drone deliveries.</p>
-      <p>📧 General: <a href="mailto:info@keetajordan.com">info@keetajordan.com</a><br />
-         👨‍💼 Qais: <a href="mailto:qais@keetajordan.com">qais@keetajordan.com</a></p>
+      <p><strong>KEETA</strong> (Kinetic, Efficient, Express Transport Assistant) Jordan is the leading drone delivery service based in Amman, Jordan, specializing in fast, safe, and eco-friendly drone deliveries. Whether it’s your favorite food, coffee, or essential items, our innovative technology ensures quick and reliable shipping across the city.</p>
     </section>
 
-    <section id="mission" data-aos="zoom-in">
+    <section data-aos="zoom-in" id="mission">
       <h2>Our Mission</h2>
-      <p>To revolutionize delivery services using cutting-edge drone technology for efficient, contactless, and eco-friendly deliveries in Jordan.</p>
+      <p>At Keeta Jordan, we aim to revolutionize delivery services in Jordan by utilizing cutting-edge drone technology to provide efficient, contactless, and environmentally friendly delivery options. Our commitment is to enhance convenience for our customers and reduce the carbon footprint of traditional delivery methods.</p>
     </section>
 
-    <section id="gallery" data-aos="fade-left">
+    <section data-aos="fade-left" id="gallery">
       <h2>Gallery</h2>
       <div class="gallery">
-        <img src="drone1.jpg" alt="Drone 1" />
-        <img src="drone2.jpg" alt="Drone 2" />
-        <img src="drone3.jpg" alt="Drone 3" />
+        <img src="drone1.jpg" alt="Drone with food container" />
+        <img src="drone2.jpg" alt="Drone flying with box" />
+        <img src="drone3.jpg" alt="Drone concept with food" />
       </div>
     </section>
 
-    <section id="services" data-aos="fade-right">
+    <section data-aos="fade-right" id="services">
       <h2>Services</h2>
       <ul>
         <li>Fast Drone Delivery for Food & Coffee</li>
@@ -273,87 +312,176 @@
       </ul>
     </section>
 
-    <section id="tracker" data-aos="fade-up">
+    <!-- New Section: Live Drone Tracker Demo -->
+    <section data-aos="fade-up" id="tracker">
       <h2>Live Drone Tracker Demo</h2>
+      <p>Experience how our drones fly across Amman delivering your orders in real-time.</p>
+      <!-- Using OpenStreetMap iframe as a placeholder demo -->
       <iframe 
         src="https://www.openstreetmap.org/export/embed.html?bbox=35.765%2C31.957%2C35.923%2C32.031&layer=mapnik" 
         style="border:1px solid #007acc; border-radius:12px; width:100%; height:350px;" 
-        allowfullscreen loading="lazy"></iframe>
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p style="font-size: 0.9rem; color: #555; margin-top: 8px;">* This is a demo map to showcase tracking concept.</p>
     </section>
 
-    <section id="signup" data-aos="fade-left">
+    <!-- New Section: Signup / Waitlist Form -->
+    <section data-aos="fade-left" id="signup">
       <h2>Join Our Waitlist</h2>
+      <p>Sign up now to get notified when our app launches and be the first to experience fast drone delivery in Jordan.</p>
       <form id="waitlistForm" onsubmit="return handleSubmit(event)">
-        <input type="email" id="email" placeholder="Enter your email" required />
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
         <input type="submit" value="Notify Me" />
       </form>
-      <p id="formMessage" style="margin-top:10px; display:none;"></p>
+      <p id="formMessage" style="margin-top: 10px; color: green; display: none;"></p>
     </section>
 
-    <section id="blog" data-aos="fade-up">
+    <!-- New Section: Blog / News -->
+    <section data-aos="fade-up" id="blog">
       <h2>Latest News</h2>
-      <article>
+      <article style="margin-bottom: 20px;">
         <h3>Drone Food Delivery: The Future is Here</h3>
-        <p>Learn how drones are changing delivery in Jordan.</p>
-        <a href="https://www.techradar.com/news/drones-are-the-future-of-food-delivery" class="button" target="_blank">Read More</a>
+        <p>Discover how drone technology is transforming food delivery services worldwide and here in Jordan.</p>
+        <a href="https://www.techradar.com/news/drones-are-the-future-of-food-delivery" target="_blank" rel="noopener" class="button">Read More</a>
+      </article>
+      <article style="margin-bottom: 20px;">
+        <h3>Reducing Carbon Footprint with Drones</h3>
+        <p>Learn how drone deliveries can significantly cut down emissions compared to traditional transport methods.</p>
+        <a href="https://www.ourcrowd.com/learn/drone-food-delivery" target="_blank" rel="noopener" class="button">Read More</a>
+      </article>
+      <article>
+        <h3>Keeta Jordan Launch Plans</h3>
+        <p>Stay tuned for updates on our upcoming app launch and exciting partnerships across Amman.</p>
       </article>
     </section>
 
-    <section id="impact" data-aos="fade-right">
+    <!-- New Section: Environmental Impact Stats -->
+    <section data-aos="fade-right" id="impact">
       <h2>Environmental Impact</h2>
       <ul style="list-style:none; padding-left:0;">
-        <li>🚀 <strong>50% reduction</strong> in delivery emissions</li>
-        <li>🌿 <strong>Zero fuel</strong> with electric-powered drones</li>
-        <li>🌍 <strong>Lower traffic</strong> congestion in Amman</li>
+        <li style="margin-bottom: 15px; font-size:1.2rem;">
+          🚀 <strong>50% reduction</strong> in delivery emissions compared to traditional vehicles.
+        </li>
+        <li style="margin-bottom: 15px; font-size:1.2rem;">
+          🌿 <strong>Zero fuel consumption</strong> with our electric-powered drones.
+        </li>
+        <li style="margin-bottom: 15px; font-size:1.2rem;">
+          🌍 <strong>Lower traffic congestion</strong> in busy Amman neighborhoods.
+        </li>
       </ul>
     </section>
 
-    <section id="faq" data-aos="fade-up">
+    <!-- Expanded FAQ -->
+    <section data-aos="fade-up" id="faq">
       <h2>Frequently Asked Questions</h2>
-      <div class="faq-item"><div class="faq-question">How fast is the drone delivery?</div><div class="faq-answer">Within 15–30 minutes.</div></div>
-      <div class="faq-item"><div class="faq-question">Is it contactless?</div><div class="faq-answer">Yes, fully contactless.</div></div>
-      <div class="faq-item"><div class="faq-question">Can I track orders?</div><div class="faq-answer">Yes, via mobile app.</div></div>
+
+      <div class="faq-item">
+        <div class="faq-question">How fast is the drone delivery service?</div>
+        <div class="faq-answer">Our drones typically deliver within 15-30 minutes depending on your location in Amman.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is the delivery contactless?</div>
+        <div class="faq-answer">Yes, all deliveries are fully contactless for safety and convenience.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I track my order?</div>
+        <div class="faq-answer">Absolutely! Our mobile app lets you track your delivery in real-time.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What if the drone can’t reach my address?</div>
+        <div class="faq-answer">We will notify you immediately and provide alternative options such as manual delivery or pickup points.</div>
+      </div>
+
+      <!-- New FAQ items -->
+      <div class="faq-item">
+        <div class="faq-question">Are drones safe to use in urban areas?</div>
+        <div class="faq-answer">Yes, our drones are equipped with advanced sensors and safety protocols to avoid obstacles and ensure safe flights.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What is the maximum weight a drone can carry?</div>
+        <div class="faq-answer">Currently, our drones can carry packages weighing up to 5 kilograms, suitable for most food and essential deliveries.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How do you handle bad weather?</div>
+        <div class="faq-answer">For safety, drone operations are paused during severe weather conditions. We notify customers promptly and reschedule deliveries if needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I schedule a delivery for a specific time?</div>
+        <div class="faq-answer">Yes, the app will allow you to select preferred delivery windows once launched.</div>
+      </div>
     </section>
+
   </main>
 
-  <footer data-aos="fade-up" style="text-align:center; padding:20px; font-size:0.9rem;">
-    &copy; 2025 Keeta Jordan. All rights reserved.<br />
-    📧 <a href="mailto:info@keetajordan.com">info@keetajordan.com</a> | <a href="mailto:qais@keetajordan.com">qais@keetajordan.com</a>
-  </footer>
+  <footer data-aos="fade-up" style="text-align:center; padding:20px; font-size:0.9rem; color:#666;">
+  &copy; 2025 Keeta Jordan. All rights reserved.<br />
+  📧 <a href="mailto:info@keetajordan.com" style="color:#007acc; text-decoration:none;">info@keetajordan.com</a> |
+  <a href="mailto:qais@keetajordan.com" style="color:#007acc; text-decoration:none;">qais@keetajordan.com</a>
+</footer>
 
+  <!-- AOS JS for scroll animations -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
   <script>
     AOS.init({ duration: 900, once: true });
 
+    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => {
         q.classList.toggle('active');
-        const a = q.nextElementSibling;
-        a.classList.toggle('open');
-        a.style.maxHeight = a.classList.contains('open') ? a.scrollHeight + "px" : null;
+        const ans = q.nextElementSibling;
+        if (ans.classList.contains('open')) {
+          ans.classList.remove('open');
+          ans.style.maxHeight = null;
+        } else {
+          ans.classList.add('open');
+          ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
       });
     });
 
+    // Signup form handler - for now just simulate success message
     function handleSubmit(event) {
       event.preventDefault();
-      const email = document.getElementById('email').value;
+      const emailInput = document.getElementById('email');
       const message = document.getElementById('formMessage');
-      if (email) {
-        message.style.display = "block";
-        message.style.color = "green";
-        message.textContent = `Thank you! We'll notify you at ${email}`;
-        document.getElementById('email').value = '';
+      if(emailInput.value){
+        message.textContent = `Thank you! We'll notify you at ${emailInput.value}`;
+        message.style.color = 'green';
+        message.style.display = 'block';
+        emailInput.value = '';
+      } else {
+        message.textContent = 'Please enter a valid email.';
+        message.style.color = 'red';
+        message.style.display = 'block';
       }
+      return false;
     }
 
-    // Hide header on scroll
+    // Header hide on scroll down, show on scroll up
     let lastScrollTop = 0;
-    const header = document.getElementById("main-header");
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      header.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        // scrolling down - hide header
+        header.style.top = '-70px'; // hide above the top (adjust to header height)
+      } else {
+        // scrolling up - show header
+        header.style.top = '0';
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
     });
   </script>
+
 </body>
 </html>
+
