@@ -5,109 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Keeta Jordan - Drone Delivery App</title>
 
-  <!-- ✅ AOS (Animate On Scroll) CSS -->
+  <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f8fa;
-      color: #333;
-    }
-
-    header {
-      background: #007acc;
-      color: white;
-      padding: 20px 10px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-      margin: 40px 0 20px;
-    }
-
-    a {
-      color: #007acc;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #005b99;
-      text-decoration: underline;
-    }
-
-    .button {
-      background-color: #007acc;
-      border: none;
-      color: white;
-      padding: 12px 24px;
-      text-align: center;
-      font-size: 16px;
-      margin: 15px 0;
-      cursor: pointer;
-      border-radius: 6px;
-      display: inline-block;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .button:hover {
-      background-color: #005f99;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    /* ✅ Mobile responsive */
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f8fa; color: #333; }
+    header { background: #007acc; color: white; padding: 20px; text-align: center; }
+    h1 { margin: 0; font-size: 2em; }
+    main { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1);}
+    section { margin-bottom: 60px; }
+    footer { text-align: center; font-size: 0.9em; color: #666; margin: 40px 0 20px; }
+    a { color: #007acc; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #005b99; text-decoration: underline; }
+    .button { background: #007acc; color: #fff; padding: 12px 24px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; }
+    .button:hover { background: #005f99; transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 20px; }
+    .gallery img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .video-container { position: relative; width: 100%; padding-bottom: 56.25%; margin-top: 20px; }
+    .video-container iframe { position: absolute; width: 100%; height: 100%; border: none; border-radius: 8px; }
     @media (max-width: 600px) {
-      body {
-        font-size: 16px;
-      }
-
-      main {
-        margin: 20px;
-        padding: 15px;
-      }
-
-      h1 {
-        font-size: 1.5em;
-      }
-
-      .button {
-        width: 100%;
-      }
+      main { margin: 20px; padding: 15px; }
+      h1 { font-size: 1.5em; }
+      .button { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <header style="text-align: center; padding: 20px;">
-    <img src="keeta-logo.png" alt="Keeta Jordan Logo" style="width: 180px; height: auto; margin-bottom: 10px;">
+  <header data-aos="fade-down">
+    <img src="keeta-logo.png" alt="Keeta Jordan Logo" style="width:180px; margin-bottom:10px;">
     <h1>Keeta Jordan</h1>
     <p>Your Local Drone Delivery for Food, Coffee & Essentials</p>
   </header>
@@ -119,26 +46,40 @@
     </section>
 
     <section data-aos="zoom-in">
-      <h2>Our Mission</h2>
-      <p>To revolutionize delivery in Jordan by making it faster, smarter, and more environmentally friendly with drone technology.</p>
+      <h2>How It Works</h2>
+      <p>Fast, safe deliveries using autonomous drones — straight from warehouse to doorstep.</p>
+    </section>
+
+    <section data-aos="fade-up">
+      <h2>In Action</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/d51c9CpSNqw" allowfullscreen></iframe>
+      </div>
     </section>
 
     <section data-aos="fade-left">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Drone with package flying">
+        <img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab1d4?auto=format&fit=crop&w=800&q=80" alt="Drone delivery concept">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" alt="Drone flying over city">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Drone delivering package">
+      </div>
+    </section>
+
+    <section data-aos="fade-right">
       <h2>Stay Connected</h2>
-      <p>We’re currently building our app and website. Stay tuned for updates and launch announcements!</p>
+      <p>We’re building our app — stay tuned!</p>
       <a href="mailto:keeta.jordan.app@gmail.com" class="button">Contact Us</a>
     </section>
   </main>
 
-  <footer>
+  <footer data-aos="fade-up">
     &copy; 2025 Keeta Jordan. All rights reserved.
   </footer>
 
-  <!-- ✅ AOS JavaScript -->
+  <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-
+  <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
