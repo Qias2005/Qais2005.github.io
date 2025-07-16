@@ -1,6 +1,4 @@
-
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -330,10 +328,10 @@
     <section data-aos="fade-left" id="signup">
       <h2>Join Our Waitlist</h2>
       <p>Sign up now to get notified when our app launches and be the first to experience fast drone delivery in Jordan.</p>
-      <form action="https://formspree.io/f/xwpqkwvv" method="POST">
-  <input type="email" name="email" placeholder="Enter your email" required />
-  <input type="submit" value="Notify Me" />
-</form>
+      <form id="waitlistForm" onsubmit="return handleSubmit(event)">
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        <input type="submit" value="Notify Me" />
+      </form>
       <p id="formMessage" style="margin-top: 10px; color: green; display: none;"></p>
     </section>
 
@@ -341,11 +339,7 @@
     <section data-aos="fade-up" id="blog">
       <h2>Latest News</h2>
       <article style="margin-bottom: 20px;">
-        <h3>
-  <a href="https://www.sciencedirect.com/science/article/pii/S0278431925000210" target="_blank" rel="noopener noreferrer">
-    Drone Food Delivery: The Future is Here
-  </a>
-</h3>
+        <h3>Drone Food Delivery: The Future is Here</h3>
         <p>Discover how drone technology is transforming food delivery services worldwide and here in Jordan.</p>
         <a href="https://www.techradar.com/news/drones-are-the-future-of-food-delivery" target="_blank" rel="noopener" class="button">Read More</a>
       </article>
@@ -488,5 +482,3 @@
 
 </body>
 </html>
-<!-- Trigger rebuild: Keeta Jordan -->
-
